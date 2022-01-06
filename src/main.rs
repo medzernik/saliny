@@ -1,17 +1,27 @@
 
 
-struct Linka {
-    cislo: uint,
-    zastavky: Vec<Zastavka>
+pub struct Linka {
+    cislo: u64,
+    zastavky: Vec<String>
+}
+
+impl Linka {
+    pub fn create(cislo: u64, zastavky: Vec<String>) -> Linka {
+        Linka {
+            cislo: cislo,
+            zastavky: zastavky,
+        }
+
+    }
 }
 
 struct Odchod {
-    cislo: uint,
-    odchod: &str,
+    cislo: u64,
+    odchod: String,
 }
 
 struct Zastavka {
-    nazov: &str,
+    nazov: String,
     harmonogram: Vec<Odchod>,
     pristup: bool,
 }
@@ -19,7 +29,8 @@ struct Zastavka {
 
 
 fn main() {
-
+    let linka1 = Linka::create(2, vec![String::from("Hlavna stanica"), String::from("Pod stanicou")]);
+    println!("Linka: {}, zastavky: {}", linka1.cislo, linka1.zastavky[0]);
 
 
 }
